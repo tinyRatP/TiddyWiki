@@ -453,6 +453,8 @@ Error message and password prompt
 
 <li>Tekzv's TiddlyWiki</li>
 
+<li>性能测试工具 k6 简明教程</li>
+
 <li>链路追踪以及 OpenTracing 标准</li>
 
 </ul>
@@ -13956,8 +13958,8 @@ Error message and password prompt
 <div created="20201029092357845" modified="20201029093925021" title="$:/state/tab--959111941">
 <pre>$:/core/ui/ControlPanel/EditorTypes</pre>
 </div>
-<div created="20201029083414702" modified="20201029093935981" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20201029083414702" modified="20201029104739125" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
 <div created="20201029090255259" modified="20201029092658464" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
@@ -13969,9 +13971,9 @@ Error message and password prompt
 <pre>$:/core/ui/ControlPanel/Toolbars/ViewToolbar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
-<div list="[[Tekzv's TiddlyWiki]]" title="$:/StoryList">
+<div created="20201029104737560" list="$:/ControlPanel [[Tekzv's TiddlyWiki]]" modified="20201029104737560" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -13990,15 +13992,15 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://tiddy-wiki.vercel.app/&quot;
+            &quot;text&quot;: &quot;https://wiki.tekzv.com/&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;tiddy-wiki.vercel.app&quot;
+            &quot;text&quot;: &quot;wiki.tekzv.com&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;tiddy-wiki.vercel.app&quot;
+            &quot;text&quot;: &quot;wiki.tekzv.com&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
@@ -14018,7 +14020,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;https://tiddy-wiki.vercel.app&quot;
+            &quot;text&quot;: &quot;https://wiki.tekzv.com&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -14035,7 +14037,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20201029084154546" modified="20201029084910401" title="$:/temp/NewTagName">
+<div created="20201029084154546" modified="20201029104358994" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="Paco Rivière" core-version="&gt;=5.0.0" created="20201029083416841" dependents="" description="Catalan (Spain)" icon="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22810%22%20height%3D%22540%22%3E%0A%3Crect%20width%3D%22810%22%20height%3D%22540%22%20fill%3D%22%23FCDD09%22%2F%3E%0A%3Cpath%20stroke%3D%22%23DA121A%22%20stroke-width%3D%2260%22%20d%3D%22M0%2C90H810m0%2C120H0m0%2C120H810m0%2C120H0%22%2F%3E%0A%3C%2Fsvg%3E" modified="20201029083416841" name="ca-ES" original-plugin-type="language" original-tags="" original-title="$:/languages/ca-ES" original-type="application/json" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/languages/ca-ES" type="text/vnd.tiddlywiki" version="5.1.22">
@@ -14988,7 +14990,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201029083418081" modified="20201029093929341" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>async</pre>
 </div>
-<div created="20201029085302254" modified="20201029093703453" title="$:/temp/search">
+<div created="20201029085302254" modified="20201029104536135" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20201029093932303" modified="20201029093932304" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15118,10 +15120,301 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201029083556228" modified="20201029092407518" title="$:/view">
 <pre>classic</pre>
 </div>
-<div created="20201029084122736" modified="20201029085558145" title="Tekzv's TiddlyWiki" type="text/vnd.tiddlywiki">
+<div created="20201029084122736" modified="20201029104341820" title="Tekzv's TiddlyWiki" type="text/vnd.tiddlywiki">
 <pre>!! 微服务治理
 
-&lt;&lt;list-links &quot;[tag[SOA]sort[title]]&quot;&gt;&gt;</pre>
+&lt;&lt;list-links &quot;[tag[SOA]sort[title]]&quot;&gt;&gt;
+
+!! 运维管理
+
+&lt;&lt;list-links &quot;[tag[QA]sort[title]]&quot;&gt;&gt;</pre>
+</div>
+<div author="tekzv" created="20201029104350070" modified="20201029104526857" tags="QA LoadingTest" title="性能测试工具 k6 简明教程" type="text/x-markdown">
+<pre>## 一、简介
+
+[k6](https://k6.io/) 是一款高性能的负载压力测试工具，由 Golang 语言编写并开源。它使用 JavaScript 作为测试脚本的语言，无论是对于开发人员还是测试人员来说，使用起来都非常简单。
+
+![image-20201020151026709](https://i.imgur.com/b8PBppy.png)
+
+## 二、安装
+
+macOS 的安装方法。
+
+```bash
+# macOS
+$ brew install k6
+```
+
+Docker 的安装方法。
+
+```bash
+# Docker
+$ docker pull loadimpact/k6
+```
+
+Debian/Ubuntu 的安装方法。
+
+```bash
+# Debian
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+$ echo &quot;deb https://dl.bintray.com/loadimpact/deb stable main&quot; | sudo tee -a /etc/apt/sources.list
+$ sudo apt-get update
+$ sudo apt-get install k6
+```
+
+如果上述安装方法都不适用，官网还提供了其他的[安装方法](https://k6.io/docs/getting-started/installation)。
+
+## 三、测试脚本
+
+只需要导入 `k6/http` ，接着按照 JavaScript 的语法依次传入需要测试的接口地址，Headers 和请求参数就可以了。
+
+k6 测试脚本主要由三部分构成：
+
+- `import`：导入 k6 包和其他第三方包
+- `export let options`：k6 全局设置，例如并发量，请求持续时间，日志，User-Agent 等等
+- `export default function(){}`：k6 测试脚本入口函数
+
+```javascript
+// filename: k6-demo.js
+
+import http from 'k6/http';
+
+export let options = {}
+
+export default function () {
+  var url = 'http://test.k6.io/login';
+  var payload = JSON.stringify({
+    email: 'aaa',
+    password: 'bbb',
+  });
+
+  var params = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  http.post(url, payload, params);
+}
+```
+
+k6 执行脚本的时候，会自动寻找 `default function()`，并将其作为执行入口，因此，该函数必须要申明。
+
+```bash
+$ k6 run k6-demo.js
+```
+
+等待脚本执行完毕之后，可以看到输出结果。
+
+![intro](https://i.imgur.com/zyz4mxn.png)
+
+## 四、断言设置
+
+k6 可以使用 `check()` 函数对请求结果进行校验，然后根据测试需要来设置断言。
+
+```javascript
+import { check } from 'k6';
+import http from 'k6/http';
+
+export default function () {
+  let res = http.get('http://test.k6.io/');
+  check(res, {
+    'is status 200': (r) =&gt; r.status === 200,  // 判断 HTTP 响应状态码是否为 200
+  });
+}
+```
+
+如果 HTTP 响应状态码为 200，k6 会以绿色渲染输出结果。
+
+![request success](https://i.imgur.com/Y73ZG7w.png)
+
+如果 HTTP 响应状态码有一次不为 200，k6 会以红色渲染输出结果，并且附带成功次数，失败次数和成功率等附加信息。
+
+![request failed](https://i.imgur.com/SdIdjbg.png)
+
+## 五、并发设置
+
+作为压力测试工具，并发测试是其基础。k6 有两种方式设置并发参数：命令行内和测试脚本内。
+
+### 5.1 命令行内
+
+```bash
+$ k6 run -vus 100 --duration 1m k6-demo.js
+```
+
+参数解释：
+
+- `--vus 10`：设置最大并发量为 100
+- `--duration 1m`：设置并发持续时间为 1 分钟
+
+两个参数组合起来就是模拟 1 分钟内最大请求量为 10 的测试环境。
+
+### 5.2 测试脚本内
+
+测试脚本内需要在全局 `options` 中设置。
+
+```javascript
+export let options = {
+  stages: [
+    { duration: '20s', target: 40 },  // 20s 内并发量为 20
+    { duration: '1m', target: 100 },  // 1m 内并发量为 100
+  ],
+};
+```
+
+这里，模拟了两次并发环境：20 秒内并发请求 40 次；1 分钟内并发请求 100 次。
+
+![vus-target](https://i.imgur.com/MFGOCqL.png)
+
+## 六、自定义测试指标
+
+k6 内置了 `data_received`，`http_req_duration` 等等测试指标。如果这些测试指标不足够反映测试情况，k6 也支持自定义数据指标，目前只支持四种：
+
+- Counter：统计数据集累加的结果
+- Gauge：统计数据集的最小值，最大值和当前值
+- Rate：统计数据集的非 0 的百分比
+- Trend：统计数据集中的最小值，最大值，平均值和百分位数值
+
+### 6.1 Counter
+
+```javascript
+import { Counter } from 'k6/metrics';
+
+let myCounter = new Counter('my_counter');
+
+export default function () {
+  myCounter.add(1);
+  myCounter.add(2);
+}
+```
+
+![counter](https://k6.io/docs/static/fa8124f4de95351c488cfb1e95aa0240/47a22/counter-output.webp)
+
+### 6.2 Gauge
+
+```javascript
+import { Gauge } from 'k6/metrics';
+
+let myGauge = new Gauge('my_gauge');
+
+export default function () {
+  myGauge.add(3);
+  myGauge.add(1);
+  myGauge.add(2);
+}
+```
+
+![Gauge](https://k6.io/docs/static/8c8935977966354e9a5992d22464c77b/47a22/gauge-output.webp)
+
+### 6.3 Rate
+
+```javascript
+import { Rate } from 'k6/metrics';
+
+let myRate = new Rate('my_rate');
+
+export default function () {
+  myRate.add(true);
+  myRate.add(false);
+  myRate.add(1);
+  myRate.add(0);
+}
+```
+
+![Rate](https://k6.io/docs/static/eb36ed53d5758ea7b732990aba7a3073/47a22/rate-output.webp)
+
+### 6.4 Trend
+
+```javascript
+import { Trend } from 'k6/metrics';
+
+let myTrend = new Trend('my_trend');
+
+export default function () {
+  myTrend.add(1);
+  myTrend.add(2);
+}
+```
+
+![Trend](https://k6.io/docs/static/6c58787e814201f921238c7b2dca7013/47a22/trend-output.webp)
+
+## 七、分组和别名
+
+如果有大量请求接口需要测试，全部在统一层级输出测试结果，那必然会是非常杂乱的，很不直观。
+
+不过，k6 支持对请求接口进行分组，可以把统一组或相似的请求接口归为一组。
+
+```javascript
+import { group, check } from 'k6';
+import http from 'k6/http'
+
+export default function () {
+  group('user flow: returning user', function () {
+    group('visit homepage', function () {
+      // load homepage resources
+      let res = http.get('http://test.k6.io/');
+      check(res, {
+        'is status 200': (r) =&gt; r.status === 200,
+      });
+
+    });
+    group('login', function () {
+      // perform login
+      let res = http.get('http://httpbin.org/');
+      check(res, {
+        'body size &lt; 200': (r) =&gt; r.body.length &lt; 200,
+      })
+    });
+  });
+}
+
+```
+
+`group` 可以多层嵌套，`function() ` 匿名函数中正常写入测试接口就可以了。
+
+![group](https://i.imgur.com/WxMEVAD.png)
+
+## 八、options 全局
+
+k6 在执行测试脚本之前，会先获取全局定义好的 `options` 变量，它主要指定 k6 运行时的一些参数信息。
+
+### 8.1 指定 Threshold
+
+```javascript
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export let options = {
+  thresholds: {
+    'http_req_duration': ['p(90) &lt; 400'], // 90% 的请求持续时间应该小于 400ms
+  }
+};
+
+export default function() {
+  let res1 = http.get('https://test-api.k6.io/public/crocodiles/1/');
+  sleep(1);
+}
+```
+
+### 8.2 指定并发参数
+
+ ```javascript
+export let options = {
+  stages: [
+    { duration: '20s', target: 40 },  // 20s 内并发量为 20
+    { duration: '1m', target: 100 },  // 1m 内并发量为 100
+  ],
+};
+ ```
+
+
+
+## 参考文章
+
+- [Performance Testing with k6](https://www.sitepen.com/blog/performance-testing-with-k6), by Stuart Bingë 
+
+(全文完)
+</pre>
 </div>
 <div author="tekzv" created="20201029083931619" modified="20201029085514745" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 标准" type="text/x-markdown">
 <pre>随着容器化的流行，微服务化已经是后端开发者的基本思维方式。
