@@ -14000,7 +14000,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Tekzv's Wiki]]" title="$:/StoryList">
+<div created="20201030032122608" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030032122608" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15150,16 +15150,14 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201029083556228" modified="20201029092407518" title="$:/view">
 <pre>classic</pre>
 </div>
-<div created="20201029084122736" modified="20201030031651402" title="Tekzv's Wiki" type="text/vnd.tiddlywiki">
+<div created="20201029084122736" modified="20201030031657871" title="Tekzv's Wiki" type="text/vnd.tiddlywiki">
 <pre>!! 微服务治理
 
 &lt;&lt;list-links &quot;[tag[SOA]sort[title]]&quot;&gt;&gt;
 
 !! 运维管理
 
-&lt;&lt;list-links &quot;[tag[QA]sort[title]]&quot;&gt;&gt;
-
-[[埋点]]</pre>
+&lt;&lt;list-links &quot;[tag[QA]sort[title]]&quot;&gt;&gt;</pre>
 </div>
 <div author="tekzv" created="20201029104350070" modified="20201029104526857" tags="QA LoadingTest" title="性能测试工具 k6 简明教程" type="text/x-markdown">
 <pre>## 一、简介
@@ -15448,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030031354402" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030034607978" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15479,15 +15477,29 @@ export let options = {
 
 链路追踪系统主要分为三个部分：
 
-1. 数据采集
-2. 数据存储
-3. 数据展示
+1. 数据采集：代码中埋点，设置请求上报的阶段以及记录该阶段隶属于哪个阶段
+2. 数据存储：将上报的数据持久化存储于数据库中
+3. 数据展示：前端通过 `TracerID` 查询与之相关联的请求阶段，并呈现于界面
 
 ### 2.1 数据采集
 
-数据采集通过在代码中[[埋点]]
+
 
 ##  三、一些术语
+
+### 3.1 Trace And Span
+
+Google Dapper 论文中指出，链路追踪主要有以下三个要素：
+
+- Span：基本工作单元
+- Trace：一系列 Span 组成的树状结构
+- Annotation： 用来记录
+
+### 3.2 采样率
+
+在分布式微服务系统中，链路追踪模块在生产环境中不能影响到核心业务的性能。
+
+例如，在系统峰值时每秒有 10000 次请求，如果每一次请求都进行完整的跟踪，链路追踪所占用的资源将变得不可接受。因此，需要对数据进行采样，例如设置 1/1000 的采样率，链路追踪只会在每 1000 次请求中采样其中的一次。
 
 ## 四、Tracing，Metrics And Logging
 
@@ -15503,6 +15515,7 @@ Tracing（链路追踪），Metrics（数据监控）和 Logging（日志信息�
 
 - [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
 - [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
+- [分布式集群环境下调用链路追踪](https://developer.ibm.com/zh/technologies/web-development/articles/wa-distributed-systems-request-tracing/) by 李林锋
 
 ## 二、OpenTracing 标准
 
