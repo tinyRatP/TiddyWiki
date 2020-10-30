@@ -13998,9 +13998,9 @@ Error message and password prompt
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
-<div list="[[Tekzv's Wiki]]" title="$:/StoryList">
+<div list="[[链路追踪以及 OpenTracing 规范]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15446,16 +15446,40 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030010915905" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
-<pre>随着容器化的流行，微服务化已经是后端开发者的基本思维方式。
+<div author="tekzv" created="20201029083931619" modified="20201030020540105" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
+
+使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
+
+链路追踪的出现，正是为了解决这一问题。
+
+![service invoke](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/8B7xm3.jpg?x-oss-process=style/webp)
+
+## 一、什么是链路追踪
+
+「链路追踪」一词最早出现于 2010 年 Google 发表的论文 [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/)s，其中介绍了 Google 是如何设计和实现分布式追踪系统。
+
+链路追踪主要解决的是：当一个用户发起服务请求后，微服务系统中哪些服务会被调用，不同服务之间的调用关系和每个服务的处理时间。无论是对于维护还是性能优化，这些都是关键信息。
+
+![request trace](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/7Rgtug.png?x-oss-process=style/webp)
+
+&gt; 字母节点标识微服务中不同的服务
+
+举个例子，当用户通过前端请求 `服务 A` 时，`服务 A` 会依次调用它的依赖`服务 B` 和 `服务 C`，`服务 C`  会依次调用 `服务 D` 和 `服务 E`。
+
+## 二、一些术语
+
+## 三、OpenTracing 规范
+
+## 参考链接
+
+- [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
 
 传统项目的单体应用被拆分成了多个服务，单个服务的复杂度大幅降低，库与库之间的依赖转变为服务与服务之间的依赖。但，复杂的分布式微服务系统面临着三个问题：
 
 - 性能分析难：一个微服务依赖于多个微服务，被依赖的服务也依赖其他服务，当某个服务出现问题，无法快速定位问题来源
 - 调用关系难：业务需求迭代很快，服务之间的调用关系变化频繁，无法靠人工梳理清晰的服务间调用关系
 - 容量评估难：应对流量暴涨时需要扩容，不同服务入口的流量对系统影响是不同的
-
-![service invoke](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/8B7xm3.jpg?x-oss-process=style/webp)
 
 本篇文章将介绍分布式链路追踪是如何解决复杂的微服务调用关系的问题，以及链路追踪中的 OpenTracing 标准。
 
