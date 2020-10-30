@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030073729292" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030081107540" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15473,21 +15473,9 @@ export let options = {
 
 ![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/4h3F46.png?x-oss-process=style/webp)
 
-## 二、链路追踪的工作流程
 
-链路追踪系统主要分为三个部分：
 
-1. 数据采集：代码中埋点，设置请求上报的阶段以及记录该阶段隶属于哪个阶段
-2. 数据存储：将上报的数据持久化存储于数据库中
-3. 数据展示：前端通过 `TracerID` 查询与之相关联的请求阶段，并呈现于界面
-
-### 2.1 数据采集
-
-### 2.2 数据存储
-
-### 2.3 数据展示
-
-##  三、一些术语
+##  二、一些术语
 
 ### 3.1 Trace And Span
 
@@ -15513,25 +15501,19 @@ Tracing（链路追踪），Metrics（数据监控）和 Logging（日志信息�
 
 ## 四、OpenTracing 规范
 
+![OpenTracing](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/M2o378.png?x-oss-process=style/webp)
+
 受到 Google 分布式链路追踪系统 Dapper 的影响，诞生了许多类似的链路追踪框架，如 Twitter Zipkin，SourceGraph Appdash，Uber Jaeger 等等。它们的实现方式各不相同，也就互不兼容，也就是说，使用其中一种，往后都很难迁移至另一种方案。为了解决不同链路追踪框架的兼容性问题，[OpenTracing](https://opentracing.io/) 诞生了。
 
 OpenTracing 于 2016 年加入 [CNCF](https://www.cncf.io/)，是一个中立的（厂商无关，平台无关）链路追踪接口规范。它定义了一套通用的链路数据上报接口，并要求其他链路追踪框架都需要来实现这些接口。如此一来，开发者只需要对接 OpenTracing 即可，不需要关心具体采用哪一个链路追踪方案。
+
+![OpenTracing Support](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/2nQ745.png?x-oss-process=style/webp)
 
 ## 参考链接
 
 - [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
 - [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
 - [分布式集群环境下调用链路追踪](https://developer.ibm.com/zh/technologies/web-development/articles/wa-distributed-systems-request-tracing/) by 李林锋
-
-## 二、OpenTracing 标准
-
-![OpenTracing](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/M2o378.png?x-oss-process=style/webp)
-
-受到 Google 分布式链路追踪系统 Dapper 的影响，诞生了开源的 Twitter Zipkin，SourceGraph Appdash，Uber Jaeger 等等。但各家的分布式方案互不兼容，使用其中一种，未来都很难迁移另一种方案。为了解决兼容性问题，诞生了 [OpenTracing](https://opentracing.io/)。
-
-OpenTracing 于 2016 年 10 月加入 CNCF 基金会，是一个中立的（厂商无关，平台无关）链路追踪接口标准。它定义了一套通用的数据上报接口，要求各个分布式链路追踪系统都来实现这套接口。如此一来，开发者只需要对接 OpenTracing，不需要关心具体采用何种分布式追踪方案，因此可以在不同方案之间无缝切换。
-
-![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/KY3t5y.png?x-oss-process=style/webp)
 
 ### 2.1 数据模型
 
