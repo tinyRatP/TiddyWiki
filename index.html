@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030073021540" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030073729292" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15515,7 +15515,7 @@ Tracing（链路追踪），Metrics（数据监控）和 Logging（日志信息�
 
 受到 Google 分布式链路追踪系统 Dapper 的影响，诞生了许多类似的链路追踪框架，如 Twitter Zipkin，SourceGraph Appdash，Uber Jaeger 等等。它们的实现方式各不相同，也就互不兼容，也就是说，使用其中一种，往后都很难迁移至另一种方案。为了解决不同链路追踪框架的兼容性问题，[OpenTracing](https://opentracing.io/) 诞生了。
 
-OpenTracing
+OpenTracing 于 2016 年加入 [CNCF](https://www.cncf.io/)，是一个中立的（厂商无关，平台无关）链路追踪接口规范。它定义了一套通用的链路数据上报接口，并要求其他链路追踪框架都需要来实现这些接口。如此一来，开发者只需要对接 OpenTracing 即可，不需要关心具体采用哪一个链路追踪方案。
 
 ## 参考链接
 
