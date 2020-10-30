@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030095728727" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030101236086" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15558,7 +15558,31 @@ Temporal relationships between Spans in a single Trace
          [Span E·······]        [Span F··] [Span G··] [Span H··]
 ```
 
+## 四、Example
 
+OpenTracing 官方提供了示例 [Take OpenTracing for a HotROD ride](https://medium.com/opentracing/take-opentracing-for-a-hotrod-ride-f6e3141f7941)。
+
+首先，使用 Docker 部署 OpenTracing 的一种实现 Jaeger：
+
+```bash
+$ docker run -d -p6831:6831/udp -p16686:16686 jaegertracing/all-in-one:latest
+```
+
+然后，下载示例代码，并运行：
+
+```bash
+$ git clone git@github.com:jaegertracing/jaeger.git jaeger
+$ cd jaeger
+$ go run ./examples/hotrod/main.go all
+```
+
+访问地址 `http://127.0.0.1:8080` 模拟微服务系统中的调用。
+
+![hotrod](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/N2y952.png?x-oss-process=style/webp)
+
+最后，可以在 Jaeger 中看到服务与服务之间的调用关系。
+
+![Jaeger](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/332Mz8.png?x-oss-process=style/webp)
 
 ## 参考链接
 
