@@ -14000,7 +14000,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201030073016358" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030073016358" title="$:/StoryList">
+<div created="20201030090715561" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030090715561" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030081107540" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030090930882" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15509,15 +15509,20 @@ OpenTracing 于 2016 年加入 [CNCF](https://www.cncf.io/)，是一个中立的
 
 ![OpenTracing Support](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/2nQ745.png?x-oss-process=style/webp)
 
-## 参考链接
+目前，主流的链路追踪框架都支持 OpenTracing，包括 Jaeger，Zipkin，Lightstep 等等，具体的支持列表可以参考官方的 [Supported tracers](https://opentracing.io/docs/supported-tracers/)。
 
-- [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
-- [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
-- [分布式集群环境下调用链路追踪](https://developer.ibm.com/zh/technologies/web-development/articles/wa-distributed-systems-request-tracing/) by 李林锋
+### 4.1 数据模型
 
-### 2.1 数据模型
+![mental-model](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/d97E95.png?x-oss-process=style/webp)
 
-`Trace`  是一条调用链，调用链由多个 `Span` 组成。每个 Span 代表着一个处理阶段，Span 与 Span 存在 `References`，即引用关系。
+OpenTracing 采用的数据模型借鉴于 Google Dapper ，主要有三部分：
+
+- Span：基本组成元素，在链路中表示一个接口的调用，数据库的调用，服务的调用等等
+
+- Trace：表示一次完整的追踪链路，Trace 由一系列 Span 组成
+- SpanContext：
+
+`Trace` 是一条调用链，调用链又由多个 `Span` 组成，每个 `Span` 代表着一个处理阶段，`Span` 与 `Span` 之间存在有引用关系。
 
 ```text
 Temporal relationships between Spans in a single Trace
@@ -15532,14 +15537,13 @@ Temporal relationships between Spans in a single Trace
          [Span E·······]        [Span F··] [Span G··] [Span H··]
 ```
 
-对于每一个 Span，都包含如下属性：
 
-- Operation Name：处理阶段的名称
-- Start Time：处理阶段的开始时间
-- End Time：处理阶段的完成时间
-- Span Logs：处理阶段日志
-- Span Context：处理阶段的上下文，其中含有 TraceID 和 SpanID
-- References：引用关系
+
+## 参考链接
+
+- [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
+- [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
+- [分布式集群环境下调用链路追踪](https://developer.ibm.com/zh/technologies/web-development/articles/wa-distributed-systems-request-tracing/) by 李林锋
 
 （全文完）</pre>
 </div>
