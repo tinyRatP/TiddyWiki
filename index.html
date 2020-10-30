@@ -14000,7 +14000,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201030032122608" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030032122608" title="$:/StoryList">
+<div created="20201030073016358" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030073016358" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030035441506" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030073021540" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15494,7 +15494,7 @@ export let options = {
 Google Dapper 论文中指出，链路追踪主要有以下三个要素：
 
 - Span：一次链路调用，可以是服务调用，数据库调用，接口调用等等
-- Trace：从用户请求开始到结束，通过唯一标识形成一系列 Span 的树状结构
+- Trace：从用户请求开始到结束，通过唯一的 TraceID 形成一系列 Span 的树状结构
 - Annotation： 用来记录请求中特定时间的相关信息，例如时间，错误，日志等等
 
 ### 3.2 采样率
@@ -15512,6 +15512,10 @@ Tracing（链路追踪），Metrics（数据监控）和 Logging（日志信息�
 - Logging：记录离散的事件，程序执行到某一点的详细信息。
 
 ## 四、OpenTracing 规范
+
+受到 Google 分布式链路追踪系统 Dapper 的影响，诞生了许多类似的链路追踪框架，如 Twitter Zipkin，SourceGraph Appdash，Uber Jaeger 等等。它们的实现方式各不相同，也就互不兼容，也就是说，使用其中一种，往后都很难迁移至另一种方案。为了解决不同链路追踪框架的兼容性问题，[OpenTracing](https://opentracing.io/) 诞生了。
+
+OpenTracing
 
 ## 参考链接
 
