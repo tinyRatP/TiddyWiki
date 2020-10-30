@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030023210854" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030023936983" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15467,6 +15467,8 @@ export let options = {
 
 链路追踪主要解决的是：当一个用户发起服务请求后，记录微服务系统中哪些服务会被调用，不同服务之间的调用关系和每个服务的处理时间。收集这些关键信息，无论是对于后期维护还是性能优化，都是非常有必要的。
 
+![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/OTHT_0.png?x-oss-process=style/webp)
+
 ## 二、一些术语
 
 ## 三、OpenTracing 规范
@@ -15483,22 +15485,9 @@ export let options = {
 
 本篇文章将介绍分布式链路追踪是如何解决复杂的微服务调用关系的问题，以及链路追踪中的 OpenTracing 标准。
 
-## 一、什 么是链路追踪
 
-「链路追踪」一词最早出现于 Google 发布的 [Dapper 论文](https://research.google/pubs/pub36356/) ，其中介绍了自研的分布式链路追踪的实现原理。
 
-链路追踪需要记录在一次特定的请求后系统完成工作需要的所有信息。举例来说，现在有一个服务需要五台服务器：前端（A），中间件（B，C）以及后端（D，E） 。
 
-1. 用户发起请求，到达前端 A
-2. 前端 A 依次调用中间件 B 和中间件 C
-3. 中间件 C 又依次调用后端 D 和 后端 E
-4. 后端 E 完成任务后，中间件 C 的调用完成，前端 A 返回结果
-
-![request trace](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/7Rgtug.png?x-oss-process=style/webp)
-
-链路追踪记录请求中调用了哪些服务以及它们的调用顺序。如果把这些服务用线串起来，就像链条一样，称其为「调用链」。这样一来，对于服务的每一次请求调用，开发者都能重塑调用过程，无论是在性能优化还是问题排查，调用链都能够提供非常有价值的信息。
-
-![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/OTHT_0.png?x-oss-process=style/webp)
 
 ## 二、OpenTracing 标准
 
