@@ -14000,7 +14000,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201030020611563" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030020611563" title="$:/StoryList">
+<div created="20201030024000140" list="[[Tekzv's Wiki]] [[链路追踪以及 OpenTracing 规范]]" modified="20201030024000140" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030023936983" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030024746583" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15465,9 +15465,9 @@ export let options = {
 
 举个例子，当用户通过前端请求 `服务 A` 时，`服务 A` 会依次调用它的依赖`服务 B` 和 `服务 C`，`服务 C`  会依次调用 `服务 D` 和 `服务 E`，然后它们各自向上返回结果，最终实现完整的功能调用。
 
-链路追踪主要解决的是：当一个用户发起服务请求后，记录微服务系统中哪些服务会被调用，不同服务之间的调用关系和每个服务的处理时间。收集这些关键信息，无论是对于后期维护还是性能优化，都是非常有必要的。
+链路追踪主要解决的是：当一个用户发起服务请求后，记录微服务系统中哪些服务会被调用，不同服务之间的调用关系和每个服务的处理时间。当系统中某个服务出现问题，通过链路追踪系统，可以清晰看到
 
-![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/OTHT_0.png?x-oss-process=style/webp)
+![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/4h3F46.png?x-oss-process=style/webp)
 
 ## 二、一些术语
 
@@ -15476,6 +15476,7 @@ export let options = {
 ## 参考链接
 
 - [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
+- [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
 
 传统项目的单体应用被拆分成了多个服务，单个服务的复杂度大幅降低，库与库之间的依赖转变为服务与服务之间的依赖。但，复杂的分布式微服务系统面临着三个问题：
 
