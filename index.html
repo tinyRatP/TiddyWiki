@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030092404635" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030092725038" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15504,7 +15504,6 @@ OpenTracing 采用的数据模型借鉴于 Google Dapper ，主要有两部分�
 - Span：基本组成元素，在链路中表示一个接口的调用，数据库的调用，服务的调用等等
 
 - Trace：表示一次完整的追踪链路，Trace 由一系列 Span 组成
-- SpanContext：携带跨服务通信的必要数据，例如 `span_id` 和 `trace_id`
 
 `Trace` 是一条调用链，调用链又由多个 `Span` 组成，每个 `Span` 代表着一个处理阶段，`Span` 与 `Span` 之间存在有引用关系。
 
@@ -15523,7 +15522,7 @@ Temporal relationships between Spans in a single Trace
 
 ## 3.2 Span
 
-上面提到过，Span 是链路追踪的基本组成元素，是独立的工作单元。微服务中的每个接口调用，服务调用，外部组件的调用，都可以使用 Span 组件来跟踪。
+上面提到过，Span 是链路追踪的基本组成元素，是独立的工作单元。微服务中的每个接口调用，服务调用，外部组件的调用，都可以使用 Span 组件来追踪。
 
 Span 内部封装有如下数据：
 
@@ -15532,7 +15531,30 @@ Span 内部封装有如下数据：
 - A set of  key:value span Tags：一系列以键值对形式存在的标签
 - A set of key:value span Logs：一系列以键值对形式存在的日志
 - A SpanContext：Span 的上下文数据，跨服务通信时携带必要数据，例如 `span_id` 和 `trace_id`
-- 
+
+```text
+    t=0            operation name: db_query               t=x
+
+     +-----------------------------------------------------+
+     | · · · · · · · · · ·    Span     · · · · · · · · · · |
+     +-----------------------------------------------------+
+
+Tags:
+- db.instance:&quot;customers&quot;
+- db.statement:&quot;SELECT * FROM mytable WHERE foo='bar'&quot;
+- peer.address:&quot;mysql://127.0.0.1:3306/customers&quot;
+
+Logs:
+- message:&quot;Can't connect to mysql server on '127.0.0.1'(10061)&quot;
+
+SpanContext:
+- trace_id:&quot;abc123&quot;
+- span_id:&quot;xyz789&quot;
+- Baggage Items:
+  - special_id:&quot;vsid1738&quot;
+```
+
+
 
 ## 参考链接
 
@@ -15540,7 +15562,7 @@ Span 内部封装有如下数据：
 - [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
 - [分布式集群环境下调用链路追踪](https://developer.ibm.com/zh/technologies/web-development/articles/wa-distributed-systems-request-tracing/) by 李林锋
 
-（全文完）gg</pre>
+（全文完）</pre>
 </div>
 
 
