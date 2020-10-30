@@ -15446,7 +15446,7 @@ export let options = {
 (全文完)
 </pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201030034607978" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201030035441506" tags="DistributedTracing SOA" title="链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。
 
 使用微服务架构的时候，如果只是一味增加服务，而没有对其进行有效地管理，当服务接口出现问题的时候，开发人员很难从错综复杂的调用关系中找到问题的根源。
@@ -15483,7 +15483,9 @@ export let options = {
 
 ### 2.1 数据采集
 
+### 2.2 数据存储
 
+### 2.3 数据展示
 
 ##  三、一些术语
 
@@ -15491,9 +15493,9 @@ export let options = {
 
 Google Dapper 论文中指出，链路追踪主要有以下三个要素：
 
-- Span：基本工作单元
-- Trace：一系列 Span 组成的树状结构
-- Annotation： 用来记录
+- Span：一次链路调用，可以是服务调用，数据库调用，接口调用等等
+- Trace：从用户请求开始到结束，通过唯一标识形成一系列 Span 的树状结构
+- Annotation： 用来记录请求中特定时间的相关信息，例如时间，错误，日志等等
 
 ### 3.2 采样率
 
@@ -15552,29 +15554,6 @@ Temporal relationships between Spans in a single Trace
 - Span Logs：处理阶段日志
 - Span Context：处理阶段的上下文，其中含有 TraceID 和 SpanID
 - References：引用关系
-
-## 三、链路追踪，数据监控以及日志采集
-
-![Metrics Logging Tracing](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/aRo4o2.png?x-oss-process=style/webp)
-
-Logging，Metrics 和 Tracing 在功能上有相似之处，它们却都有各自专注的地方。
-
-- Logging：用于记录离散事件，例如程序的调试信息或错误信息。
-- Metrics：用于记录可聚合数据，通常是固定的时序数据。
-- Tracing：用于单个请求的处理流程，包括服务调用和处理时长等信息。
-
-对于三种不同的分析需求，都有针对其设计开发的分析工具。
-
-- Logging：ELK，日志分析服务中的最主流。
-- Metrics：Prometheus，第二个加入 CNCF 项目的云原生监控框架。
-- Tracing：OpenTracing 标准和具体实现 Jaeger，Jaeger 是 Uber 开源的一款符合 OpenTracing 标准的链路追踪服务。
-
-## 参考链接
-
-- [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/), by Google
-
-- [OpenTracing 详解](https://pjw.io/articles/2018/05/08/opentracing-explanations/), by Jingwen Peng
-- [Metrics, tracing, and logging](https://peter.bourgon.org/blog/2017/02/21/metrics-tracing-and-logging.html), by Peter Bourgon
 
 （全文完）</pre>
 </div>
