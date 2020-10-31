@@ -199,6 +199,10 @@ Error message and password prompt
 
 <li>$:/GitHub/Username</li>
 
+<li>$:/GoogleAnalyticsAccount</li>
+
+<li>$:/GoogleAnalyticsDomain</li>
+
 <li>$:/Import</li>
 
 <li>$:/isEncrypted</li>
@@ -211,6 +215,8 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/dynannotate</li>
 
+<li>$:/plugins/tiddlywiki/googleanalytics</li>
+
 <li>$:/plugins/tiddlywiki/highlight</li>
 
 <li>$:/plugins/tiddlywiki/markdown</li>
@@ -222,6 +228,8 @@ Error message and password prompt
 <li>$:/state/editpreviewtype</li>
 
 <li>$:/state/plugin-info--1282796834-$:/plugins/tiddlywiki/freelinks---567570423</li>
+
+<li>$:/state/plugin-info--1529721954-$:/plugins/tiddlywiki/googleanalytics---1403365463</li>
 
 <li>$:/state/showeditpreview</li>
 
@@ -9962,6 +9970,12 @@ Error message and password prompt
 <div created="20201029090345972" modified="20201029090347404" title="$:/GitHub/Username">
 <pre>tinyRatP</pre>
 </div>
+<div created="20201031084159514" creator="tekzv" modified="20201031084159514" modifier="tekzv" title="$:/GoogleAnalyticsAccount">
+<pre>G-8W42T825PF</pre>
+</div>
+<div created="20201031084227406" creator="tekzv" modified="20201031084232325" modifier="tekzv" title="$:/GoogleAnalyticsDomain">
+<pre>https://wiki.tezv.com</pre>
+</div>
 <div plugin-type="import" status="pending" title="$:/Import" type="application/json">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -13855,6 +13869,30 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div contributor="Sylvain Comte" dependents="" description="Website visitor statistics from Google" list="readme settings usage" name="Google Analytics" plugin-type="plugin" title="$:/plugins/tiddlywiki/googleanalytics" type="application/json" version="5.1.22">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/tiddlywiki/googleanalytics/googleanalytics.js&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/googleanalytics/googleanalytics.js&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/tiddlywiki/googleanalytics/googleanalytics.js\ntype: application/javascript\nmodule-type: startup\n\nRuns Google Analytics with the account number in the tiddler `$:/GoogleAnalyticsAccount` and the domain name in `$:/GoogleAnalyticsDomain`\n\n\\*/\n(function(){\n\n/*jslint node: true, browser: true */\n/*global $tw: false */\n\&quot;use strict\&quot;;\n\n// Export name and synchronous status\nexports.name = \&quot;google-analytics\&quot;;\nexports.platforms = [\&quot;browser\&quot;];\nexports.synchronous = true;\n\nexports.startup = function() {\n\t// getting parameters\n\tvar GA_ACCOUNT = $tw.wiki.getTiddlerText(\&quot;$:/GoogleAnalyticsAccount\&quot;,\&quot;\&quot;).replace(/\\n/g,\&quot;\&quot;),\n\t\tGA_DOMAIN = $tw.wiki.getTiddlerText(\&quot;$:/GoogleAnalyticsDomain\&quot;,\&quot;\&quot;).replace(/\\n/g,\&quot;\&quot;);\n\tif (GA_DOMAIN == \&quot;\&quot; || GA_DOMAIN == undefined) GA_DOMAIN = \&quot;auto\&quot;;\n\n\t// using ga \&quot;isogram\&quot; function\n  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n\n  ga('create', GA_ACCOUNT, GA_DOMAIN);\n  ga('send', 'pageview');\n};\n\n})();\n&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;startup&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/googleanalytics/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/googleanalytics/readme&quot;,
+            &quot;text&quot;: &quot;This plugin enables you to use Google Analytics to track access to your online TiddlyWiki document. Based upon the [[official Google code|https://developers.google.com/analytics/devguides/collection/analyticsjs]].\n\n[[Source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/plugins/tiddlywiki/googleanalytics]]\n&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/googleanalytics/settings&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/googleanalytics/settings&quot;,
+            &quot;text&quot;: &quot;You have only two value to set, only first is mandatory:\n\n# ''[[Google Analytics Account|$:/GoogleAnalyticsAccount]]'': (mandatory) a code of the form `UA-XXXXXX-XX` where X are digits&lt;br/&gt;&lt;$edit-text tiddler=\&quot;$:/GoogleAnalyticsAccount\&quot; default=\&quot;\&quot; tag=\&quot;input\&quot;/&gt;\n\n# ''[[Google Analytics Domain|$:/GoogleAnalyticsDomain]]'': (optional) the website URL where the TiddlyWiki file is published. Defaults to `auto` if not set.&lt;br/&gt;&lt;$edit-text tiddler=\&quot;$:/GoogleAnalyticsDomain\&quot; default=\&quot;\&quot; tag=\&quot;input\&quot;/&gt;\n&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/googleanalytics/usage&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/googleanalytics/usage&quot;,
+            &quot;text&quot;: &quot;!! Create a Google Analytics account\n\nIf you don't already have an account:\n\n# Go to the Google Analytics website: http://www.google.com/analytics/\n# Click the ''Access Google Analytics'' button and follow instructions to set up your account\n# Enter the URL where the wiki is hosted\n# Note the Tracking ID for this domain of the form `UA-XXXXXX-XX`\n\n!! Install the plugin on your local copy of the TiddlyWiki\n\n# ''Backup your TiddlyWiki''. Just in case\n# Install the plugin via the plugin manager in control panel\n# Save the TiddlyWiki andrefresh the page to load the plugin\n# Go to [[$:/ControlPanel]] &gt; Plugins tab and unfold the Google Analytics Plugin\n# Go to the //settings// tab and edit the parameters\n# Save the TiddlyWiki\n\n!! Upload the new version of your TiddlyWiki\n\n# Upload the saved TiddlyWiki to TiddlySpot, GitHub, GitLab or other web host\n# Return to your Google Analytics page to check that your site is being tracked\n&quot;
+        }
+    }
+}</pre>
+</div>
 <div author="Joao Bolila" dependents="" description="Highlight.js syntax highlighting" list="readme usage howto license" name="Highlight" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.1.22">
 <pre>{
     &quot;tiddlers&quot;: {
@@ -14142,6 +14180,9 @@ Error message and password prompt
 <div created="20201031021358124" modified="20201031021402211" title="$:/state/plugin-info--1282796834-$:/plugins/tiddlywiki/freelinks---567570423">
 <pre>readme</pre>
 </div>
+<div created="20201031084157397" creator="tekzv" modified="20201031084303965" modifier="tekzv" title="$:/state/plugin-info--1529721954-$:/plugins/tiddlywiki/googleanalytics---1403365463">
+<pre>usage</pre>
+</div>
 <div created="20201029084340194" modified="20201029084340194" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
@@ -14160,14 +14201,14 @@ Error message and password prompt
 <div created="20201029083421254" modified="20201030115638385" title="$:/state/tab--219645345">
 <pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
 </div>
-<div created="20201029083635313" modified="20201030031556822" title="$:/state/tab--86143343">
+<div created="20201029083635313" creator="tekzv" modified="20201031084149973" modifier="tekzv" title="$:/state/tab--86143343">
 <pre>$:/core/ui/ControlPanel/Plugins/Installed/Plugins</pre>
 </div>
 <div created="20201029092357845" modified="20201031020921037" title="$:/state/tab--959111941">
 <pre>$:/core/ui/ControlPanel/Stylesheets</pre>
 </div>
-<div created="20201029083414702" modified="20201031081546403" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20201029083414702" creator="tekzv" modified="20201031084148317" modifier="tekzv" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Plugins</pre>
 </div>
 <div created="20201029090255259" modified="20201031021134286" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/Gitea</pre>
@@ -14182,12 +14223,12 @@ Error message and password prompt
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
 <div created="20201031081558910" creator="它" modified="20201031081559431" modifier="特口中" title="$:/status/UserName">
 <pre>tekzv</pre>
 </div>
-<div list="[[Tekzv's Wiki]]" title="$:/StoryList">
+<div created="20201031084151686" creator="tekzv" list="$:/ControlPanel $:/plugins/tiddlywiki/googleanalytics $:/plugins/tiddlywiki/async" modified="20201031084153965" modifier="tekzv" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15201,13 +15242,13 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20201029083416841" dependents="" description="Basic theme" modified="20201029083416841" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20201029083418081" modified="20201031074900187" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
-<pre>image</pre>
+<div created="20201029083418081" creator="tekzv" modified="20201031083848779" modifier="tekzv" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
+<pre></pre>
 </div>
 <div created="20201029085302254" modified="20201031065338219" title="$:/temp/search">
 <pre></pre>
 </div>
-<div created="20201031021302225" modified="20201031021302225" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
+<div created="20201031083855914" creator="tekzv" modified="20201031083855914" modifier="tekzv" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
 </div>
 <div created="20201029115105526" modified="20201029115106269" title="$:/theme">
