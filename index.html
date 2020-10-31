@@ -199,6 +199,8 @@ Error message and password prompt
 
 <li>$:/GitHub/Username</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/language</li>
@@ -9954,6 +9956,16 @@ Error message and password prompt
 <div created="20201029090345972" modified="20201029090347404" title="$:/GitHub/Username">
 <pre>tinyRatP</pre>
 </div>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/d97E95.png?x-oss-process=style/webp&quot;
+        }
+    }
+}</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -14163,7 +14175,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201031061144829" list="[[Tekzv's Wiki]] [[分布式链路追踪以及 OpenTracing 规范]] [[Jaeger 简明教程]]" modified="20201031061145771" title="$:/StoryList">
+<div created="20201031065346354" list="[[分布式链路追踪以及 OpenTracing 规范]] [[Jaeger 简明教程]]" modified="20201031065346952" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201029094029469" modified="20201029094029469" title="$:/temp/advancedsearch">
@@ -15180,7 +15192,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20201029083418081" modified="20201031021219227" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>auto</pre>
 </div>
-<div created="20201029085302254" modified="20201029104536135" title="$:/temp/search">
+<div created="20201029085302254" modified="20201031065338219" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20201031021302225" modified="20201031021302225" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15325,7 +15337,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 
 &lt;&lt;list-links &quot;[tag[QA]sort[title]]&quot;&gt;&gt;</pre>
 </div>
-<div author="tekzv" created="20201029083931619" modified="20201031061844850" tags="DistributedTracing SOA" title="分布式链路追踪以及 OpenTracing 规范" type="text/x-markdown">
+<div author="tekzv" created="20201029083931619" modified="20201031074509092" tags="DistributedTracing SOA" title="分布式链路追踪以及 OpenTracing 规范" type="text/x-markdown">
 <pre>随着容器化技术的发展，传统项目微服务化成为了趋势。传统的单体应用被拆分为多个独立服务，然后分别部署于不同的服务器。互相依赖的功能，由原来的本地调用变为了服务之间的远程调用。
 
 ![service invoke](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/8B7xm3.jpg?x-oss-process=style/webp)
@@ -15338,7 +15350,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 
 ![](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/4h3F46.png?x-oss-process=style/webp)
 
-## 一、什么是分布式链路追踪
+# 一、什么是分布式链路追踪
 
 「分布式链路追踪」一词最早出现于 2010 年 Google 发表的论文 [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/)s。论文介绍了 Google 是如何设计和实现分布式追踪系统 Dapper。
 
@@ -15354,11 +15366,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 
 ![lightstep](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/52B64z.png?x-oss-process=style/webp)
 
-### 1.1 Trace，Span And Annotations
-
-Dapper 论文中提出了 Trace，Span 和 Annotations 的概念。
-
-## 二、Tracing，Metrics And Logging
+# 二、Tracing，Metrics And Logging
 
 Tracing（链路追踪），Metrics（数据监控）和 Logging（日志信息）都是微服务治理中的关键组件，但似乎它们又很相似。
 
@@ -15366,41 +15374,54 @@ Tracing（链路追踪），Metrics（数据监控）和 Logging（日志信息�
 - Metrics：记录可以聚合的数据，通常是固定类型的时序数据，例如 Guage，Counter，Histogram。
 - Logging：记录离散的事件，程序执行到某一点的详细信息。
 
-## 三、OpenTracing 规范
+针对三种不同的需求，社区上都有非常强大的分析工具：
+
+* Tracing：[OpenTracing](https://opentracing.io/) ，OpenTracing 是分布式链路追踪系统的接口规范
+* Metrics：[Prometheus](https://prometheus.io/)，云原生的监控告警框架
+* Logging：[ELK](https://www.elastic.co/)，最流行的日志分析服务
+
+# 三、OpenTracing 规范
 
 ![OpenTracing](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/M2o378.png?x-oss-process=style/webp)
 
-受到 Google 分布式链路追踪系统 Dapper 的影响，诞生了许多类似的链路追踪框架，如 Twitter Zipkin，SourceGraph Appdash，Uber Jaeger 等等。它们的实现方式各不相同，也就互不兼容，也就是说，使用其中一种，往后都很难迁移至另一种方案。为了解决不同链路追踪框架的兼容性问题，[OpenTracing](https://opentracing.io/) 诞生了。
+受到 Google 分布式链路追踪系统 Dapper 的影响，诞生了许多类似的分布式链路追踪系统，如 Zipkin(Twitter)，Appdash(SouceGraph), Jaeger(Uber) 等等。它们的实现方式各不相同，互不兼容，也就是说，使用其中一种，往后都很难迁移至另一种方案。
 
-OpenTracing 于 2016 年加入 [CNCF](https://www.cncf.io/)，是一个中立的（厂商无关，平台无关）链路追踪接口规范。它定义了一套通用的链路数据上报接口，并要求其他链路追踪框架都需要来实现这些接口。如此一来，开发者只需要对接 OpenTracing 即可，不需要关心具体采用哪一个链路追踪方案。
+为了解决业务代码与分布式链路追踪实现的强耦合，诞生了 [OpenTracing](https://opentracing.io/) 规范。
+
+OpenTracing 于 2016 年加入 [CNCF](https://www.cncf.io/)，是一个中立的（厂商无关，平台无关）分布式链路追踪规范。它定义了一套通用的链路数据上报接口，要求其他分布式链路追踪系统都需要来实现这些接口。开发人员在业务代码中只需要对接 OpenTracing 提供的接口，不需要关心采用哪一种分布式链路追踪系统。具体使用分布式链路追踪系统的时候，只要符合了 OpenTracing 标准，都可以做到无痛接入。
+
+目前，主流的分布式链路追踪系统都支持 OpenTracing 规范，例如 Jaeger，Zipkin，LightStep 等等。
 
 ![OpenTracing Support](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/2nQ745.png?x-oss-process=style/webp)
 
-目前，主流的链路追踪框架都支持 OpenTracing，包括 Jaeger，Zipkin，Lightstep 等等，具体的支持列表可以参考官方的 [Supported tracers](https://opentracing.io/docs/supported-tracers/)。
+&gt; 完整的支持列表，可以参考官方的 [Support tracers](https://opentracing.io/docs/supported-tracers/)
 
-### 3.1 数据模型
+## 3.1 通用架构分析
 
-![mental-model](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/d97E95.png?x-oss-process=style/webp)
+![arch](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/46D27z.png?x-oss-process=style/webp)
 
-OpenTracing 采用的数据模型借鉴于 Google Dapper ，主要有两部分：
+如今，分布式链路追踪的架构都受到 Dapper 论文的影响，设计实现上大致相同，OpenTracing 也是如此。
 
-- Span：基本组成元素，在链路中表示一个接口的调用，数据库的调用，服务的调用等等
+分布式链路追踪系统，主要由三个组件组成，它们之间协同工作：
 
-- Tracers：表示一次完整的追踪链路，Trace 由一系列 Span 组成
-
-`Trace` 是一条调用链，调用链又由多个 `Span` 组成，每个 `Span` 代表着一个处理阶段，`Span` 与 `Span` 之间存在有引用关系。
+- `Span`：基本工作单元，表示微服务系统中某个处理阶段
+- `Trace`：链路，由一系列具有相同 `trace_id` 的 Span 组成的树状结构
+- `Annotation`：注释，用于及时记录某些事件，比如 Span 开始时间与结束时间，
 
 ## 3.2 Span
 
-上面提到过，Span 是链路追踪的基本组成元素，是独立的工作单元。微服务中的每个接口调用，服务调用，外部组件的调用，都可以使用 Span 组件来追踪。
+![mental-model](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/d97E95.png?x-oss-process=style/webp)
 
-Span 内部封装有如下数据：
 
-- `OperationName`：阶段名称，也就是操作阶段
-- `StartTimestamp And FinshTimestamp`：阶段的起始时间和结束时间
-- A set of  key:value span `Tags`：一系列以键值对形式存在的标签
-- A set of key:value span `Logs`：一系列以键值对形式存在的日志
-- A `SpanContext`：Span 的上下文数据，跨服务通信时携带必要数据，例如 `span_id` 和 `trace_id`
+上面提到过，Span 是分布式链路追踪的基本工作单元。在微服务系统中，每一个服务调用阶段，外部组件调用阶段，接口调用阶段，都可以使用 Span 组件对其进行追踪。
+
+Span 组件内部封装有如下数据：
+
+- `OperationName`：操作阶段名称
+- `StartTimestamp And FinshTimestamp`：操作的起始时间和结束时间
+- A set of  key:value span `Tags`：一系列以键值对形式存在的标签信息
+- A set of key:value span `Logs`：一系列以键值对形式存在的日志信息
+- A `SpanContext`：Span 的上下文数据，跨服务通信时携带必要数据，例如 `parent_span_id` 和 `trace_id`
 
 ```text
     t=0            operation name: db_query               t=x
@@ -15424,9 +15445,11 @@ SpanContext:
   - special_id:&quot;vsid1738&quot;
 ```
 
-### 3.3 Tracers
+## 3.3 Tracer
 
-`Tracer` 是一条调用链， 通过 `trace_id`  将离散的 `Span` 关联起来，形成一种树状结构，`Span` 与 `Span` 之间存在有引用关系。
+![request trace](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/7Rgtug.png?x-oss-process=style/webp)
+
+SpanContext 中包含有 `parent_spanid` 和 `trace_id`。 分布式链路追踪系统将具有相同 `trace_id` 的一系列 Span 组合，Span 之间再根据 `parent_spanid` 排序。最后，依次将离散的 Span 的连接起来，就像一条链条，称之为链路。
 
 ```text
 Temporal relationships between Spans in a single Trace
@@ -15441,7 +15464,20 @@ Temporal relationships between Spans in a single Trace
          [Span E·······]        [Span F··] [Span G··] [Span H··]
 ```
 
-## 四、Example
+## 3.4 Annotation
+
+Annotation，标注信息，分布式链路追踪中主要用来作为事件信息的载体，一些核心的 Annotation 用于定义一个请求的开始和结束。
+
+- cs, Client Send：客户端发起请求， Span 的开始时间
+- sr, Server Recived：服务端获得请求，开始处理它。网络延迟 = sr - cs
+- ss, Server Sent：服务端处理完请求。服务端处理时间 = ss - sr
+- cr, Client Recv：客户端接收到请求回复，Span 的结束时间，整个请求处理时间 = cr - cs
+
+![annotation](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/3cR527.png?x-oss-process=style/webp)
+
+&gt;annotation 侧重于表示事件的范围属性，tags 只是记录离散的信息
+
+# 四、Example
 
 OpenTracing 官方提供了示例 [Take OpenTracing for a HotROD ride](https://medium.com/opentracing/take-opentracing-for-a-hotrod-ride-f6e3141f7941)。
 
@@ -15467,13 +15503,15 @@ $ go run ./examples/hotrod/main.go all
 
 ![Jaeger](https://tekzv-blog.oss-cn-chengdu.aliyuncs.com/332Mz8.png?x-oss-process=style/webp)
 
-## 参考链接
+# 参考链接
 
 - [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure](https://research.google/pubs/pub36356/) by Google
 - [Modern Distributed Tracing Systems Architecture](https://medium.com/modern-distributed-tracing-systems-architecture/modern-distributed-tracing-systems-architecture-698691b4f998) by Kamal Chaturvedi
-- [分布式集群环境下调用链路追踪](https://developer.ibm.com/zh/technologies/web-development/articles/wa-distributed-systems-request-tracing/) by 李林锋
+- [Understand Distributed Tracing](https://docs.lightstep.com/docs/understand-distributed-tracing) by Robin Whitmore
 
-（全文完）</pre>
+（全文完）
+
+</pre>
 </div>
 <div author="tekzv" created="20201029104350070" modified="20201029104526857" tags="QA LoadingTest" title="性能测试工具 k6 简明教程" type="text/x-markdown">
 <pre>## 一、简介
